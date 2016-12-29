@@ -16,7 +16,7 @@ CommandManager::CommandManager(Command *pCmd)
 }
 CommandManager::~CommandManager()
 {
-	while (false == mUndo.empty())
+	while (false == mUndo.empty())//еп╤о╥г©у
 	{
 		delete mUndo.top();
 		mUndo.pop();

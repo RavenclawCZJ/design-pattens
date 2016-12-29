@@ -12,48 +12,36 @@ class Subject;
 class Observer
 {
 public:
+	Observer(){}
 	~Observer(){}
 
 	virtual void Update(Subject*) = 0;//通知observer状态发生变化
-protected:
-	Observer(){}
-private:
+
 };
 
-class ConcreteObserverA : public Observer//派生自observer
+class ConcreteObserver : public Observer//派生自observer
 {
 public:
-	ConcreteObserverA(){}
-
-	~ConcreteObserverA(){}
+	ConcreteObserver(){}
+	~ConcreteObserver(){}
 
 	virtual void Update(Subject*);//实现基类提供的接口
-protected:
 private:
 	string m_state;//状态
 };
 
-//class ConcreteObserverB : public Observer//同ConcreteObserverA
-//{
-//public:
-	//ConcreteObserverB(){}
-	//~ConcreteObserverB(){}
-	//virtual void Update(Subject*);
-//protected:
-//private:
-	//string m_state;
-//};
 
 class Subject
 {
 public:
+	Subject(){}
 	~Subject(){}
 
 	virtual void Notify()//通知对象改变状态
 	{
 		cout << "快去通知观察者更新！" <<endl<< endl;
-		list<Observer*>::iterator iter = this->m_lst.begin();
-		for (; iter != m_lst.end(); iter++)
+		list<Observer*>::iterator iter = this->m_list.begin();
+		for (; iter != m_list.end(); iter++)
 		{
 			(*iter)->Update(this);
 		}
@@ -72,29 +60,20 @@ public:
 	{
 		this->m_state = state;
 	}
-protected:
-	Subject(){}
+	
 private:
 	string m_state;//模拟保存subject的状态的变量
-	list<Observer*> m_lst;//保存observer指针的链表
+	list<Observer*> m_list;//保存observer指针的链表
 };
 
-class ConcreteSubjectA : public Subject//派生自subject
+class ConcreteSubject : public Subject//派生自subject
 {
 public:
-	ConcreteSubjectA(){}
-	~ConcreteSubjectA(){}
-protected:
+	ConcreteSubject(){}
+	~ConcreteSubject(){}
 private:
 };
 
-//class ConcreteSubjectB : public Subject
-//{
-//public:
-	//ConcreteSubjectB(){}
-	//~ConcreteSubjectB(){}
-//protected:
-//private:
-//};
+
 
 #endif

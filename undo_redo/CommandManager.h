@@ -14,7 +14,7 @@ public:
 	~CommandManager();
 
 	void ExecuteCommand(Command*);
-	virtual void Execute(){}
+	void Execute(){}
 	void Undo();
 	void Redo();
 

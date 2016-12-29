@@ -15,6 +15,8 @@ class Component
 {
 public:
 	//纯虚函数，只提供接口，没有默认的实现
+	Component(){}
+	Component(string strName) : m_strName(strName){}
 	virtual void Operation() = 0;
 
 	virtual void Add(Component* com)
@@ -28,8 +30,7 @@ public:
 	}
 	virtual ~Component(){}
 protected:
-	Component(){}
-	Component(string strName) : m_strName(strName){}
+	
 	string m_strName;
 };
 
@@ -46,7 +47,7 @@ public:
 	}
 	Leaf(){}
 	Leaf(string strName) :Component(strName){}
-	virtual ~Leaf(){}
+	~Leaf(){}
 };
 
 //Composite：含有子组件的类

@@ -60,6 +60,7 @@ int main()
 		case 2:
 		{
 			p->Undo();
+			cout << endl;
 			break;
 		}
 		case 3:{
